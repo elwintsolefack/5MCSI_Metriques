@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Commits</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body style="font-family: Arial, sans-serif; padding: 16px;">
+  <h2>Commits par minute</h2>
+  <div id="chart_div" style="width: 100%; height: 520px;"></div>
+
+  <script>
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      fetch('/commits-data/')
+        .then(r => r.json())
+        .then(data => {
+          const dataTable = new google.visualization.DataTable();
+          dataTable.addColumn('string', 'Minute');
+          dataTable.addColumn('number', 'Commits');
+
+          data.results.forEach(row => {
+            dataTable.addRow([row.minute, row.count]);
+          });
+
+          const options = {
+            title: 'Nombre de commits (agrégé par minute)',
+            legend: { position: 'none' },
+            hAxis: { title: 'Minute', slantedText: true, slantedTextAngle: 45 },
+            vAxis: { title: 'Commits' }
+          };
+
+          const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+          chart.draw(dataTable, options);
+        });
+    }
+  </script>
+</body>
+</html>
