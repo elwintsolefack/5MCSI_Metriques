@@ -28,7 +28,318 @@ def monhistogramme():
     return render_template("histogramme.html")
 @app.route("/contact/")
 def MaPremiereAPI():
-    return render_template("contact.html")
+    return "<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contact</title>
+
+  <!-- Police Google (optionnel, mais ça fait pro) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#0f172a;
+      --bg2:#111827;
+      --card: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --accent:#60a5fa; /* bleu */
+      --accent2:#a78bfa; /* violet */
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 10% 10%, rgba(96,165,250,.35), transparent 60%),
+        radial-gradient(700px 420px at 90% 20%, rgba(167,139,250,.35), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px 16px;
+    }
+
+    .container{
+      width: min(980px, 100%);
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+    }
+
+    @media (max-width: 860px){
+      .container{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .left{
+      padding:28px;
+      position:relative;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border: 1px solid var(--stroke);
+      border-radius:999px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom:14px;
+    }
+
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(255,255,255,.04);
+    }
+
+    h1{
+      margin:0 0 8px 0;
+      font-size: clamp(26px, 3.2vw, 38px);
+      letter-spacing:-.02em;
+      line-height:1.1;
+    }
+
+    p{
+      margin:0 0 18px 0;
+      color: var(--muted);
+      line-height:1.6;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+
+    @media (max-width: 520px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    label{
+      display:block;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 6px 2px;
+    }
+
+    input, textarea{
+      width:100%;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 12px;
+      outline:none;
+      transition: .15s ease;
+      font-size: 14px;
+    }
+
+    textarea{ min-height: 130px; resize: vertical; }
+
+    input:focus, textarea:focus{
+      border-color: rgba(96,165,250,.65);
+      box-shadow: 0 0 0 4px rgba(96,165,250,.15);
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    button{
+      border:0;
+      cursor:pointer;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 700;
+      letter-spacing:.01em;
+      color:#07121f;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 12px 30px rgba(96,165,250,.2);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    button:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+
+    .ghost{
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--stroke);
+      box-shadow: none;
+      font-weight: 600;
+    }
+
+    .hint{
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+    }
+
+    .right{
+      padding:0;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .sideTop{
+      padding:22px 22px 14px 22px;
+      border-bottom: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+    }
+
+    .sideTop h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-.01em;
+    }
+
+    .sideTop small{
+      display:block;
+      margin-top:6px;
+      color: var(--muted);
+      line-height:1.5;
+    }
+
+    .infos{
+      padding:18px 22px 22px 22px;
+      display:grid;
+      gap:12px;
+    }
+
+    .info{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.12);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .info b{ display:block; margin-bottom:6px; }
+    .info span{ color: var(--muted); font-size: 14px; }
+
+    .toast{
+      display:none;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(34,197,94,.35);
+      background: rgba(34,197,94,.14);
+      color: rgba(255,255,255,.92);
+      font-size: 14px;
+    }
+    .toast.show{ display:block; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Formulaire -->
+    <div class="card left">
+      <div class="badge"><span class="dot"></span> Page de contact</div>
+      <h1>Envoyez-moi un message</h1>
+      <p>
+        Laissez votre <b>nom</b>, votre <b>prénom</b> et votre <b>message</b>.
+        (Dans cet exercice, l’enregistrement n’est pas nécessaire : le but est le design ✨)
+      </p>
+
+      <form id="contactForm">
+        <div class="grid">
+          <div>
+            <label for="prenom">Prénom</label>
+            <input id="prenom" name="prenom" type="text" placeholder="Ex : Dounia" required />
+          </div>
+
+          <div>
+            <label for="nom">Nom</label>
+            <input id="nom" name="nom" type="text" placeholder="Ex : Farah" required />
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Envoyer</button>
+          <button type="button" class="ghost" onclick="document.getElementById('contactForm').reset();">
+            Effacer
+          </button>
+          <span class="hint">Astuce : tout est responsive ✅</span>
+        </div>
+
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <!-- Carte infos -->
+    <div class="card right">
+      <div class="sideTop">
+        <h2>Infos</h2>
+        <small>
+          Exemple de carte “contact” + rappel : ici, aucun envoi réel n’est demandé.
+        </small>
+      </div>
+
+      <div class="infos">
+        <div class="info">
+          <b>Objet du projet</b>
+          <span>Métriques & API Flask + mise en ligne Alwaysdata</span>
+        </div>
+
+        <div class="info">
+          <b>Ce que l’examinateur voit</b>
+          <span>Une page claire, propre, esthétique, avec un formulaire complet</span>
+        </div>
+
+        <div class="info">
+          <b>Suggestion design</b>
+          <span>Tu peux personnaliser les couleurs, ajouter un logo, ou un fond différent</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Faux envoi : affichage d’un message de confirmation (sans back-end)
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const prenom = document.getElementById("prenom").value.trim();
+      const nom = document.getElementById("nom").value.trim();
+
+      const toast = document.getElementById("toast");
+      toast.textContent = `Merci ${prenom} ${nom} ✅ Votre message a bien été pris en compte (simulation).`;
+      toast.classList.add("show");
+
+      // Optionnel : reset
+      this.reset();
+    });
+  </script>
+</body>
+</html>"
                                                                                                                                        
 @app.route('/')
 def hello_world():
