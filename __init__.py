@@ -25,7 +25,7 @@ def mongraphique():
     return render_template("graphique.html")
 @app.route("/rapport/")
 def mongraphique():
-    return render_template("graphique températures.html")
+    return render_template("graphique.html")
 
                                                                                                                                        
 @app.route('/')
