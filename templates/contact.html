@@ -1,0 +1,27 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Page de contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contactez-moi</h1>
+        <p>Laissez-moi un message via ce formulaire</p>
+
+        <form>
+            <label>Nom :</label>
+            <input type="text" placeholder="Votre nom">
+
+            <label>Prénom :</label>
+            <input type="text" placeholder="Votre prénom">
+
+            <label>Message :</label>
+            <textarea placeholder="Votre message"></textarea>
+
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+
+</body>
+</html>
