@@ -62,7 +62,7 @@ def monhistogramme():
 @app.route("/commits-data/")
 def commits_data():
     
-    api_url = "https://api.github.com/repos/elwintsolefack/5MCSI_Metriques/commits?per_page=100"
+ api_url = "https://api.github.com/repos/elwintsolefack/5MCSI_Metriques/commits?per_page=100"
 
 
     req = Request(api_url, headers={"User-Agent": "Mozilla/5.0"})
@@ -104,7 +104,7 @@ def monhistogramme():
 @app.route("/commits-data/")
 def commits_data():
     
-    api_url = "https://api.github.com/repos/elwintsolefack/5MCSI_Metriques/commits?per_page=100"
+ api_url = "https://api.github.com/repos/elwintsolefack/5MCSI_Metriques/commits?per_page=100"
 
     # GitHub demande souvent un User-Agent
     req = Request(api_url, headers={"User-Agent": "Mozilla/5.0"})
