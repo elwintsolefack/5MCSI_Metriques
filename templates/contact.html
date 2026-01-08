@@ -1,311 +1,324 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact</title>
-
-  <!-- Police Google (optionnel, mais ça fait pro) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
   <style>
     :root{
-      --bg1:#0f172a;
-      --bg2:#111827;
-      --card: rgba(255,255,255,.08);
-      --stroke: rgba(255,255,255,.14);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --accent:#60a5fa; /* bleu */
-      --accent2:#a78bfa; /* violet */
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius: 18px;
+      --bg1:#0b1020;
+      --bg2:#121a33;
+      --card:#0f1730cc;
+      --stroke:#ffffff1a;
+      --text:#eaf0ff;
+      --muted:#b8c2e0;
+      --accent:#7c5cff;
+      --accent2:#2fe4ab;
+      --danger:#ff4d6d;
+      --radius: 22px;
+      --radius2: 14px;
+      --shadow: 0 24px 60px rgba(0,0,0,.45);
     }
 
     *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(900px 500px at 10% 10%, rgba(96,165,250,.35), transparent 60%),
-        radial-gradient(700px 420px at 90% 20%, rgba(167,139,250,.35), transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
       min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:32px 16px;
+      background:
+        radial-gradient(900px 500px at 12% 12%, rgba(124,92,255,.35), transparent 55%),
+        radial-gradient(700px 450px at 90% 25%, rgba(47,228,171,.25), transparent 55%),
+        radial-gradient(900px 700px at 55% 110%, rgba(255,77,109,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      display:grid;
+      place-items:center;
+      padding: 40px 18px;
     }
 
-    .container{
-      width: min(980px, 100%);
+    .wrap{
+      width:min(980px, 100%);
       display:grid;
       grid-template-columns: 1.05fr .95fr;
-      gap:18px;
+      gap: 18px;
+      align-items:stretch;
     }
+    @media (max-width: 860px){ .wrap{ grid-template-columns:1fr; } }
 
-    @media (max-width: 860px){
-      .container{ grid-template-columns: 1fr; }
-    }
-
-    .card{
-      background: var(--card);
-      border: 1px solid var(--stroke);
+    .panel{
+      border:1px solid var(--stroke);
       border-radius: var(--radius);
+      background: var(--card);
       box-shadow: var(--shadow);
       overflow:hidden;
       backdrop-filter: blur(10px);
     }
 
-    .left{
-      padding:28px;
-      position:relative;
-    }
+    .hero{ padding: 26px 26px 18px; }
 
     .badge{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      padding:8px 12px;
-      border: 1px solid var(--stroke);
-      border-radius:999px;
-      color: var(--muted);
+      padding: 8px 12px;
+      border:1px solid var(--stroke);
+      border-radius: 999px;
       font-size: 13px;
-      margin-bottom:14px;
+      color: var(--muted);
+      background: rgba(255,255,255,.04);
     }
 
     .dot{
-      width:10px;height:10px;border-radius:50%;
+      width:10px; height:10px; border-radius:50%;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(255,255,255,.04);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.12);
     }
 
     h1{
-      margin:0 0 8px 0;
-      font-size: clamp(26px, 3.2vw, 38px);
-      letter-spacing:-.02em;
-      line-height:1.1;
+      margin: 14px 0 10px;
+      font-size: clamp(26px, 2.6vw, 38px);
+      line-height: 1.12;
     }
 
-    p{
-      margin:0 0 18px 0;
+    .subtitle{
+      margin:0;
       color: var(--muted);
-      line-height:1.6;
+      line-height: 1.6;
+      font-size: 15px;
+      max-width: 52ch;
     }
 
-    .grid{
+    .grid-info{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:12px;
+      gap: 12px;
+      padding: 0 26px 26px;
     }
+    @media (max-width: 520px){ .grid-info{ grid-template-columns: 1fr; } }
 
-    @media (max-width: 520px){
-      .grid{ grid-template-columns: 1fr; }
+    .info{
+      border:1px solid var(--stroke);
+      border-radius: var(--radius2);
+      padding: 14px;
+      background: rgba(255,255,255,.03);
     }
+    .info .k{
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .info .v{ font-size: 14px; }
+
+    /* FORM */
+    .form{
+      padding: 26px;
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+    .form h2{ margin:0 0 4px; font-size: 18px; }
+    .hint{ margin:0 0 8px; color: var(--muted); font-size: 14px; line-height:1.55; }
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 520px){ .row{ grid-template-columns: 1fr; } }
 
     label{
-      display:block;
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
       font-size: 13px;
       color: var(--muted);
-      margin: 0 0 6px 2px;
     }
 
     input, textarea{
       width:100%;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.18);
-      color: var(--text);
-      border-radius: 14px;
       padding: 12px 12px;
-      outline:none;
-      transition: .15s ease;
-      font-size: 14px;
+      border-radius: 14px;
+      border:1px solid var(--stroke);
+      background: rgba(3,6,16,.45);
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
     }
+    textarea{ min-height: 140px; resize: vertical; line-height: 1.5; }
 
-    textarea{ min-height: 130px; resize: vertical; }
+    input::placeholder, textarea::placeholder{ color: rgba(184,194,224,.65); }
 
     input:focus, textarea:focus{
-      border-color: rgba(96,165,250,.65);
-      box-shadow: 0 0 0 4px rgba(96,165,250,.15);
+      border-color: rgba(124,92,255,.75);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.18);
     }
 
     .actions{
       display:flex;
-      gap:12px;
+      gap: 12px;
       align-items:center;
-      margin-top: 14px;
+      justify-content: space-between;
       flex-wrap: wrap;
+      margin-top: 6px;
     }
 
-    button{
-      border:0;
+    .btn{
       cursor:pointer;
-      border-radius: 14px;
-      padding: 12px 16px;
-      font-weight: 700;
-      letter-spacing:.01em;
-      color:#07121f;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 12px 30px rgba(96,165,250,.2);
-      transition: transform .12s ease, filter .12s ease;
-    }
-    button:hover{ transform: translateY(-1px); filter: brightness(1.06); }
-
-    .ghost{
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--stroke);
-      box-shadow: none;
-      font-weight: 600;
-    }
-
-    .hint{
-      font-size: 12px;
-      color: rgba(255,255,255,.55);
-    }
-
-    .right{
-      padding:0;
-      display:flex;
-      flex-direction:column;
-    }
-
-    .sideTop{
-      padding:22px 22px 14px 22px;
-      border-bottom: 1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
-    }
-
-    .sideTop h2{
-      margin:0;
-      font-size:18px;
-      letter-spacing:-.01em;
-    }
-
-    .sideTop small{
-      display:block;
-      margin-top:6px;
-      color: var(--muted);
-      line-height:1.5;
-    }
-
-    .infos{
-      padding:18px 22px 22px 22px;
-      display:grid;
-      gap:12px;
-    }
-
-    .info{
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.12);
-      border-radius: 16px;
-      padding: 14px;
-    }
-    .info b{ display:block; margin-bottom:6px; }
-    .info span{ color: var(--muted); font-size: 14px; }
-
-    .toast{
-      display:none;
-      margin-top: 14px;
+      border:1px solid var(--stroke);
+      border-radius: 999px;
       padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(34,197,94,.35);
-      background: rgba(34,197,94,.14);
-      color: rgba(255,255,255,.92);
-      font-size: 14px;
+      font-weight: 650;
+      letter-spacing: .2px;
+      user-select:none;
     }
-    .toast.show{ display:block; }
+
+    .btn-primary{
+      color: #0b1020;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 18px 34px rgba(124,92,255,.22);
+    }
+
+    .btn-ghost{
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+    }
+
+    .small{ color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+    .error{
+      display:none;
+      border:1px solid rgba(255,77,109,.35);
+      background: rgba(255,77,109,.12);
+      padding: 10px 12px;
+      border-radius: 14px;
+      color: #ffd4dc;
+      font-size: 13px;
+    }
+
+    .success{
+      display:none;
+      border:1px solid rgba(47,228,171,.35);
+      background: rgba(47,228,171,.10);
+      padding: 10px 12px;
+      border-radius: 14px;
+      color: #d8fff1;
+      font-size: 13px;
+    }
+
+    .footer{
+      margin-top: 12px;
+      border-top: 1px solid var(--stroke);
+      padding-top: 12px;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    a{ color: inherit; }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <main class="wrap">
 
-    <!-- Formulaire -->
-    <div class="card left">
-      <div class="badge"><span class="dot"></span> Page de contact</div>
-      <h1>Envoyez-moi un message</h1>
-      <p>
-        Laissez votre <b>nom</b>, votre <b>prénom</b> et votre <b>message</b>.
-        (Dans cet exercice, l’enregistrement n’est pas nécessaire : le but est le design ✨)
-      </p>
+    <section class="panel">
+      <div class="hero">
+        <div class="badge"><span class="dot"></span> Page de contact — Démo design</div>
+        <h1>Envoyez-moi un message</h1>
+        <p class="subtitle">
+          Cet exercice évalue l’esthétique et l’ergonomie. Les données ne sont pas enregistrées.
+        </p>
+      </div>
 
-      <form id="contactForm">
-        <div class="grid">
-          <div>
-            <label for="prenom">Prénom</label>
-            <input id="prenom" name="prenom" type="text" placeholder="Ex : Dounia" required />
-          </div>
+      <div class="grid-info">
+        <div class="info"><div class="k">Objectif</div><div class="v">Formulaire clair et moderne</div></div>
+        <div class="info"><div class="k">Champs</div><div class="v">Nom, Prénom, Message</div></div>
+        <div class="info"><div class="k">Traitement</div><div class="v">Aucun envoi réel</div></div>
+        <div class="info"><div class="k">Expérience</div><div class="v">Responsive + feedback</div></div>
+      </div>
+    </section>
 
-          <div>
-            <label for="nom">Nom</label>
-            <input id="nom" name="nom" type="text" placeholder="Ex : Farah" required />
-          </div>
+    <section class="panel">
+      <form class="form" id="contactForm" novalidate>
+        <h2>Formulaire</h2>
+        <p class="hint">Remplissez puis cliquez “Envoyer”. Un message de confirmation s’affiche (simulation).</p>
+
+        <div class="error" id="errorBox" role="alert"></div>
+        <div class="success" id="successBox" role="status"></div>
+
+        <div class="row">
+          <label>
+            Nom *
+            <input type="text" id="nom" placeholder="Votre nom" required />
+          </label>
+          <label>
+            Prénom *
+            <input type="text" id="prenom" placeholder="Votre prénom" required />
+          </label>
         </div>
 
-        <div style="margin-top:12px;">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
-        </div>
+        <label>
+          Message *
+          <textarea id="message" placeholder="Votre message..." required></textarea>
+        </label>
 
         <div class="actions">
-          <button type="submit">Envoyer</button>
-          <button type="button" class="ghost" onclick="document.getElementById('contactForm').reset();">
-            Effacer
-          </button>
-          <span class="hint">Astuce : tout est responsive ✅</span>
+          <button class="btn btn-primary" type="submit">Envoyer</button>
+          <button class="btn btn-ghost" type="reset">Réinitialiser</button>
+          <span class="small">Aucune donnée n’est sauvegardée.</span>
         </div>
 
-        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+        <div class="footer">
+          <span>© <span id="year"></span> Contact</span>
+          <span><a href="/">Retour accueil</a></span>
+        </div>
       </form>
-    </div>
+    </section>
 
-    <!-- Carte infos -->
-    <div class="card right">
-      <div class="sideTop">
-        <h2>Infos</h2>
-        <small>
-          Exemple de carte “contact” + rappel : ici, aucun envoi réel n’est demandé.
-        </small>
-      </div>
-
-      <div class="infos">
-        <div class="info">
-          <b>Objet du projet</b>
-          <span>Métriques & API Flask + mise en ligne Alwaysdata</span>
-        </div>
-
-        <div class="info">
-          <b>Ce que l’examinateur voit</b>
-          <span>Une page claire, propre, esthétique, avec un formulaire complet</span>
-        </div>
-
-        <div class="info">
-          <b>Suggestion design</b>
-          <span>Tu peux personnaliser les couleurs, ajouter un logo, ou un fond différent</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  </main>
 
   <script>
-    // Faux envoi : affichage d’un message de confirmation (sans back-end)
-    document.getElementById("contactForm").addEventListener("submit", function(e){
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const form = document.getElementById("contactForm");
+    const errorBox = document.getElementById("errorBox");
+    const successBox = document.getElementById("successBox");
+
+    function showError(msg){
+      successBox.style.display = "none";
+      errorBox.textContent = msg;
+      errorBox.style.display = "block";
+    }
+    function showSuccess(msg){
+      errorBox.style.display = "none";
+      successBox.textContent = msg;
+      successBox.style.display = "block";
+    }
+
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const prenom = document.getElementById("prenom").value.trim();
       const nom = document.getElementById("nom").value.trim();
+      const prenom = document.getElementById("prenom").value.trim();
+      const message = document.getElementById("message").value.trim();
 
-      const toast = document.getElementById("toast");
-      toast.textContent = `Merci ${prenom} ${nom} ✅ Votre message a bien été pris en compte (simulation).`;
-      toast.classList.add("show");
+      if(!nom || !prenom || !message){
+        showError("Veuillez renseigner Nom, Prénom et Message (champs obligatoires).");
+        return;
+      }
+      if(message.length < 10){
+        showError("Votre message est trop court (minimum 10 caractères).");
+        return;
+      }
 
-      // Optionnel : reset
-      this.reset();
+      showSuccess(`Merci ${prenom} ${nom}. Message reçu (simulation).`);
+      form.reset();
     });
   </script>
 </body>
