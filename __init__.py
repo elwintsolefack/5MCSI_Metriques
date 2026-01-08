@@ -28,9 +28,10 @@ def monhistogramme():
     return render_template("histogramme.html")
 @app.route("/commits-data/")
 def commits_data():
-    api_url = "https://api.github.com/repos/elwintsolefack/5MCSI_Metriques/commits?per_page=100"
+    
+    api_url = "https://api.github.com/repos/douniafa2001/5MCSI_Metriques/commits?per_page=100"
 
-    # GitHub demande souvent un User-Agent
+
     req = Request(api_url, headers={"User-Agent": "Mozilla/5.0"})
     response = urlopen(req)
     raw_content = response.read()
@@ -39,6 +40,7 @@ def commits_data():
     counts = defaultdict(int)
 
     for c in commits_json:
+        # Chemin : commit -> author -> date
         date_string = c.get("commit", {}).get("author", {}).get("date")
         if not date_string:
             continue
