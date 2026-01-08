@@ -8,7 +8,7 @@ import sqlite3
 app = Flask(__name__)
 @app.route("/contact/")
 def MaPremiereAPI():
-    return "<h2>Ma page de contact</h2>"
+    return render_template("contact.html")
 @app.route('/tawarano/')
 def meteo():
     response = urlopen('https://samples.openweathermap.org/data/2.5/forecast?lat=0&lon=0&appid=xxx')
@@ -26,9 +26,7 @@ def mongraphique():
 @app.route("/histogramme/")
 def monhistogramme():
     return render_template("histogramme.html")
-@app.route("/contact/")
-def MaPremiereAPI():
-    return render_template("contact.html")
+
 
 if __name__ == "__main__":
   app.run(debug=True)
