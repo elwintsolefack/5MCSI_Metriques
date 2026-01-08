@@ -26,7 +26,34 @@ def mongraphique():
 @app.route("/histogramme/")
 def monhistogramme():
     return render_template("histogramme.html")
+@app.route("/commits-data/")
+def commits_data():
+    # ⚠️ Mets ICI ton repo fork (owner/repo)
+    # Exemple : "DouniaFarah/5MCSI_Metriques"
+    api_url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits?per_page=100"
 
+    # GitHub demande souvent un User-Agent
+    req = Request(api_url, headers={"User-Agent": "Mozilla/5.0"})
+    response = urlopen(req)
+    raw_content = response.read()
+    commits_json = json.loads(raw_content.decode("utf-8"))
+
+    counts = defaultdict(int)
+
+    for c in commits_json:
+        date_string = c.get("commit", {}).get("author", {}).get("date")
+        if not date_string:
+            continue
+
+        dt = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%SZ")
+        minute_key = dt.strftime("%Y-%m-%d %H:%M")  # regroupement par minute
+        counts[minute_key] += 1
+
+    results = [{"minute": k, "count": counts[k]} for k in sorted(counts.keys())]
+    return jsonify(results=results)
+@app.route("/commits/")
+def commits_page():
+    return render_template("commits.html")
 
 if __name__ == "__main__":
   app.run(debug=True)
